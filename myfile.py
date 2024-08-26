@@ -1,15 +1,11 @@
-def check_number(num):
-    if num > 0:
-        print("Positive number")
-    elif num == 0:
-        print("Zero")
-    else:
-        print("Negative number")
+def greetingpeople(name):
+    return f"Hello, {name}!"
 
-number_list = [1, -2, 0, }]   
+def num_even(num):
+    return num % 2 == 0
 
-for number in number_list:
-    if number > 0:  
-        print(f"{number} is positive")
-    else:
-        print(f"{number} is not positive")
+# setting up an intentional error
+def find_maximum(a, b):
+    if a < b:  # this should be a > b
+        return a
+    return b
