@@ -5,6 +5,8 @@
 ![Platform](https://img.shields.io/badge/platform-linux-lightgrey)
 ![workflow](https://github.com/se-hw1/ncsu-students/actions/workflows/pytest.yml/badge.svg)
 [![codecov](https://codecov.io/gh/sasidharappalla/ncsu-students/branch/main/graph/badge.svg)](https://codecov.io/gh/sasidharappalla/ncsu-students)
+[![Coverage Status](https://coveralls.io/repos/github/sasidharappalla/ncsu-students/badge.svg?branch=main)](https://coveralls.io/github/sasidharappalla/ncsu-students?branch=main)
+
 
 
  
