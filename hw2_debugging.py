@@ -1,14 +1,14 @@
-import rand
+import rand #for generation of random arrays
 
-def mergeSort(arr):
-    if (len(arr) == 1):
-        return arr
+def merge_sort(arr):
+    if len(arr1) == 1:
+        return arr1
 
     half = len(arr)//2
-
+    
     return recombine(mergeSort(arr[:half]), mergeSort(arr[half:]))
 
-def recombine(leftArr, rightArr):
+def recombine(left_Arr, right_Arr):
     leftIndex = 0
     rightIndex = 0
     mergeArr = [None] * (len(leftArr) + len(rightArr))
