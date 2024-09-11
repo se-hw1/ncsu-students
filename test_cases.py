@@ -1,5 +1,6 @@
 import unittest
 import hw2_debugging
+from hw2_debugging import merge_sort
 
 class test_cases(unittest.TestCase):
     def test_correctlySorted(self):
