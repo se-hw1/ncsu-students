@@ -8,20 +8,20 @@ def merge_sort(arr):
     
     return recombine(mergeSort(arr[:half]), mergeSort(arr[half:]))
 
-def recombine(left_Arr, right_Arr):
+def recombine(left_arr, right_arr):
     leftIndex = 0
     rightIndex = 0
-    mergeArr = [None] * (len(leftArr) + len(rightArr))
-    while leftIndex < len(leftArr) and rightIndex < len(rightArr):
-        if leftArr[leftIndex] < rightArr[rightIndex]:
+    mergeArr = [None] * (len(left_arr) + len(right_arr))
+    while leftIndex < len(left_arr) and rightIndex < len(right_arr):
+        if leftArr[leftIndex] < right_arr[rightIndex]:
             rightIndex += 1
             mergeArr[leftIndex + rightIndex] = leftArr[leftIndex]
         else:
             leftIndex += 1
             mergeArr[leftIndex + rightIndex] = rightArr[rightIndex]
 
-    for i in range(rightIndex, len(rightArr)):
-        mergeArr[leftIndex + rightIndex] = rightArr[i]
+    for i in range(rightIndex, len(right_arr)):
+        mergeArr[leftIndex + rightIndex] = right_arr[i]
     
     for i in range(leftIndex, len(leftArr)):
         mergeArr[leftIndex + rightIndex] = leftArr[i]
@@ -29,7 +29,7 @@ def recombine(left_Arr, right_Arr):
     return mergeArr
 
 arr = rand.random_array([None] * 20)
-arr_out = mergeSort(arr)
+arr_out = merge_sort(arr)
 
 print(arr_out)
 
