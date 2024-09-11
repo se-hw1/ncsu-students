@@ -1,12 +1,12 @@
 import rand #for generation of random arrays
 
-def merge_sort(arr1):
+def merge_sort(arr):
     if len(arr1) == 1:
         return arr1
 
-    half = len(arr)//2
+    half = len(arr1)//2
     
-    return recombine(merge_sort(arr[:half]), merge_sort(arr[half:]))
+    return recombine(merge_sort(arr1[:half]), merge_sort(arr1[half:]))
 
 def recombine(left_arr, right_arr):
     left_index = 0
