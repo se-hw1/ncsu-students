@@ -1,31 +1,47 @@
-name: pytest
-on: [push]
+name: CI Pipeline
+
+on: [push, pull_request]
 
 jobs:
   build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.13"]
 
-      runs-on: ubuntu-latest
-      strategy:
-        matrix:
-          python-version: ["3.13"]
+    steps:
+    - uses: actions/checkout@v4
 
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
 
-      steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          
-      - name: Test with pytest
-        run: |
-          pip install pytest pytest-cov
-          pytest test_cases.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
-      
-    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install pytest pytest-cov autopep8 pylint bandit
+
+    # Run tests with pytest
+    - name: Run tests with pytest
+      run: |
+        pytest test_cases.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+
+    # Run autopep8 to check and format the code
+    - name: Run autopep8
+      run: |
+        autopep8 --in-place --aggressive --aggressive $(find . -name "*.py")
+
+    # Run pylint for static analysis
+    - name: Run pylint
+      run: |
+        pylint $(find . -name "*.py")
+
+    # Run bandit for security analysis
+    - name: Run bandit
+      run: |
+        bandit -r .
+
 
     
