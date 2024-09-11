@@ -34,7 +34,7 @@ jobs:
       run: pip install autopep8 pylint bandit
 
     - name: Format code with AutoPep8
-      run: autopep8 --in-place --aggressive --aggressive *.py
+      run: autopep8 --in-place --aggressive --aggressive test_cases.py
 
     # Bandit security analysis
     - name: Run Bandit for security analysis
@@ -45,7 +45,7 @@ jobs:
     # Pylint static analysis
     - name: Lint code with Pylint
       run: |
-        pylint "*.py" --ignore=previous-homeworks --ignore=rand.py > post_traces/pylint_report.txt || true
+        pylint "test_cases.py" --ignore=previous-homeworks --ignore=rand.py > post_traces/pylint_report.txt || true
 
     # Pytest for unit testing
     - name: Test with pytest
