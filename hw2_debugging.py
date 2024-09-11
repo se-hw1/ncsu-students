@@ -1,6 +1,6 @@
 import rand #for generation of random arrays
 
-def merge_sort(arr):
+def merge_sort(arr1):
     if len(arr1) == 1:
         return arr1
 
@@ -29,7 +29,7 @@ def recombine(left_arr, right_arr):
     return merge_arr
 
 arr = rand.random_array([None] * 20)
-arr_out = merge_sort(arr)
+arr_out = merge_sort(arr1)
 
 print(arr_out)
 
