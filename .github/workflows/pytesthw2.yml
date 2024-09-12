@@ -38,7 +38,7 @@ jobs:
     - name: Run Bandit for security analysis
       run: |
         mkdir -p post_traces
-        bandit test_cases.py > post_traces/bandit_report.txt || true
+        bandit "*.py" > post_traces/bandit_report.txt || true
 
     - name: Lint code with Pylint
       run: |
@@ -52,7 +52,7 @@ jobs:
       run: |
         pip install pytest pytest-cov
         pip install --upgrade setuptools
-        pytest test_cases.py --doctest-modules --junitxml=post_traces/test-results.xml --cov=src --cov-report=xml --cov-report=html
+        pytest "*.py" --doctest-modules --junitxml=post_traces/test-results.xml --cov=src --cov-report=xml --cov-report=html
 
     - name: Generate Pylint badge
       run: |
