@@ -1,4 +1,4 @@
-Run started:2024-09-12 00:01:06.526442
+Run started:2024-09-12 00:04:16.989446
 
 Test results:
 >> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
@@ -6,8 +6,8 @@ Test results:
    CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
    More Info: https://bandit.readthedocs.io/en/1.7.9/plugins/b101_assert_used.html
    Location: ./test_cases.py:6:4
-5	    arr = [1, 5, 4, 3, 2]
-6	    assert merge_sort(arr) == [1, 2, 3, 4, 5]
+5	
+6	    assert merge_sort([1, 5, 4, 3, 2]) == [1, 2, 3, 4, 5]
 7	
 
 --------------------------------------------------
@@ -16,8 +16,8 @@ Test results:
    CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
    More Info: https://bandit.readthedocs.io/en/1.7.9/plugins/b101_assert_used.html
    Location: ./test_cases.py:11:4
-10	    arr = [1, 2, 3, 4, 5]
-11	    assert merge_sort(arr) == [1, 2, 3, 4, 5]
+10	
+11	    assert merge_sort([1, 2, 3, 4, 5]) == [1, 2, 3, 4, 5]
 12	
 
 --------------------------------------------------
@@ -26,13 +26,13 @@ Test results:
    CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
    More Info: https://bandit.readthedocs.io/en/1.7.9/plugins/b101_assert_used.html
    Location: ./test_cases.py:16:4
-15	    arr = [-5, -6, -1, -2, -3, -4]
-16	    assert merge_sort(arr) == [-6, -5, -4, -3, -2, -1]
+15	
+16	    assert merge_sort([7]) == [7]
 
 --------------------------------------------------
 
 Code scanned:
-	Total lines of code: 10
+	Total lines of code: 7
 	Total lines skipped (#nosec): 0
 	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
 

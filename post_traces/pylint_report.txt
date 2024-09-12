@@ -5,5 +5,5 @@ test_cases.py:9:0: C0116: Missing function or method docstring (missing-function
 test_cases.py:14:0: C0116: Missing function or method docstring (missing-function-docstring)
 
 -----------------------------------
-Your code has been rated at 6.00/10
+Your code has been rated at 4.29/10
 
