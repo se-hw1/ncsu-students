@@ -33,7 +33,7 @@ jobs:
       run: pip install autopep8 pylint bandit
 
     - name: Format code with autopep8
-      run: autopep8 --in-place --aggressive --aggressive test_cases.py
+      run: autopep8 --in-place --aggressive --aggressive hw2_debugging.py
 
     - name: Run Bandit for security analysis
       run: |
