@@ -1,0 +1,1 @@
+https://img.shields.io/badge/pylint-6.00/10-brightgreen
