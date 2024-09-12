@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - 'main'
-      - 'bbond/'
+      
   pull_request:
     branches:
       - 'main'
-      - 'bbond/'
+     
 
 permissions:
   contents: write
