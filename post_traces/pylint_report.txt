@@ -1,9 +1,4 @@
-************* Module test_cases
-test_cases.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-test_cases.py:4:0: C0116: Missing function or method docstring (missing-function-docstring)
-test_cases.py:9:0: C0116: Missing function or method docstring (missing-function-docstring)
-test_cases.py:14:0: C0116: Missing function or method docstring (missing-function-docstring)
 
------------------------------------
-Your code has been rated at 4.29/10
+------------------------------------
+Your code has been rated at 10.00/10
 

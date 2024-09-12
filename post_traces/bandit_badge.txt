@@ -1,1 +1,1 @@
-https://img.shields.io/badge/bandit-issues-red
+https://img.shields.io/badge/bandit-safe-brightgreen
