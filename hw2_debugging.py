@@ -4,6 +4,7 @@ Module to perform merge sort on a list of integers.
 
 import rand
 
+
 def merge_sort(arr):
     """
     Recursively sorts the array using merge sort.
@@ -19,6 +20,7 @@ def merge_sort(arr):
 
     half = len(arr) // 2
     return recombine(merge_sort(arr[:half]), merge_sort(arr[half:]))
+
 
 def recombine(left_arr, right_arr):
     """
@@ -59,12 +61,10 @@ def recombine(left_arr, right_arr):
 
     return merge_arr
 
+
 # Generating a random array of integers
-random_arr = rand.random_array([None] * 20)  # Renamed variable to avoid redefinition
+# Renamed variable to avoid redefinition
+random_arr = rand.random_array([None] * 20)
 sorted_arr = merge_sort(random_arr)  # Corrected function call
 
 print(sorted_arr)
-
-
-
-
