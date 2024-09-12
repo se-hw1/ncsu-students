@@ -82,6 +82,22 @@ jobs:
         echo "$autopep8_badge"
         echo "$autopep8_badge" > post_traces/autopep8_badge.txt
 
+    - name: Update README.md with badges
+      run: |
+        pylint_badge=$(cat post_traces/pylint_badge.txt)
+        bandit_badge=$(cat post_traces/bandit_badge.txt)
+
+        sed -i "s|!\[Pylint Score\](https://img.shields.io/badge/pylint-.*)|![Pylint Score](${pylint_badge})|g" README.md
+        sed -i "s|!\[Bandit Security\](https://img.shields.io/badge/bandit-.*)|![Bandit Security]($bandit_badge)|" README.md
+
+    - name: Commit updated README.md 
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+        git add README.md post_traces/pylint_badge.txt post_traces/bandit_badge.txt post_traces/pylint_report.txt post_traces/bandit_report.txt
+        git commit -am "Update Pylint and bandit badges" || echo "No changes to commit"
+        git push
+
      
 
     
