@@ -1,5 +1,5 @@
 """
-Merge Sort on List of Integers
+Module to perform merge sort on a list of integers.
 """
 
 import rand
