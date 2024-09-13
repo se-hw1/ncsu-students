@@ -70,7 +70,6 @@ sorted_arr = merge_sort(random_arr)  # Corrected function call
 print(sorted_arr)
 
 
-
 # Generating a random array of integers
 # Renamed variable to avoid redefinition
 random_arr = rand.random_array([None] * 20)
