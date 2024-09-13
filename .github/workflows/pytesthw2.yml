@@ -75,9 +75,9 @@ jobs:
     - name: Generate autopep8 badge
       run: |
         if grep -q "exit code 0" post_traces/autopep8_report.txt; then
-          autopep8_badge="https://img.shields.io/badge/autopep8-needs%20formatting-red"
-        else
           autopep8_badge="https://img.shields.io/badge/autopep8-formatted-brightgreen"
+        else
+          autopep8_badge="https://img.shields.io/badge/autopep8-needs%20formatting-red"
         fi
         echo "$autopep8_badge"
         echo "$autopep8_badge" > post_traces/autopep8_badge.txt
