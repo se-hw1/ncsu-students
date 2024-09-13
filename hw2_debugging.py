@@ -15,7 +15,7 @@ def merge_sort(arr):
     Returns:
         list: Sorted list of integers.
     """
-    if len(arr) == 1:
+    if len(arr) <= 1:
         return arr
 
     half = len(arr) // 2
@@ -60,6 +60,15 @@ def recombine(left_arr, right_arr):
         merge_index += 1
 
     return merge_arr
+
+
+# Generating a random array of integers
+# Renamed variable to avoid redefinition
+random_arr = rand.random_array([None] * 20)
+sorted_arr = merge_sort(random_arr)  # Corrected function call
+
+print(sorted_arr)
+
 
 
 # Generating a random array of integers
