@@ -46,7 +46,7 @@ jobs:
 
     - name: Check code formatting with autopep8
       run: |
-        autopep8 --diff hw2_debugging.py > post_traces/autopep8_report.txt || true
+        autopep8 --diff test_cases.py > post_traces/autopep8_report.txt || true
 
     - name: Test with pytest
       run: |
