@@ -73,13 +73,20 @@ jobs:
 
     - name: Generate autopep8 badge
       run: |
-        if grep -q "exit code 0" post_traces/autopep8_report.txt; then
-          autopep8_badge="https://img.shields.io/badge/autopep8-formatted-brightgreen"
+        if [ "$autopep8_status" = "success" ]; then
+          badge_color="brightgreen"
+          badge_message="autopep8-formatted"
+        elif [ "$autopep8_status" = "failure" ]; then
+          badge_color="red"
+          badge_message="autopep8-not_formatted"
         else
-          autopep8_badge="https://img.shields.io/badge/autopep8-needs%20formatting-red"
+          badge_color="lightgrey"
+          badge_message="autopep8-status_unknown"
         fi
-        echo "$autopep8_badge"
-        echo "$autopep8_badge" > post_traces/autopep8_badge.txt
+
+        badge_url="https://img.shields.io/badge/${badge_message}-${badge_color}"
+        echo "$badge_url"
+        echo "$badge_url" > post_traces/autopep8_badge.txt
 
     - name: Update README.md with badges
       run: |
