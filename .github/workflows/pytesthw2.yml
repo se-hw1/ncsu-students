@@ -86,10 +86,11 @@ jobs:
       run: |
         pylint_badge=$(cat post_traces/pylint_badge.txt)
         bandit_badge=$(cat post_traces/bandit_badge.txt)
+        autopep8_badge=$(cat post_traces/autopep8_badge.txt)
 
         sed -i "s|!\[Pylint Score\](https://img.shields.io/badge/pylint-.*)|![Pylint Score](${pylint_badge})|g" README.md
-        sed -i "s|!\[Bandit Security\](https://img.shields.io/badge/bandit-.*)|![Bandit Security]($bandit_badge)|" README.md
-
+        sed -i "s|!\[Bandit Security\](https://img.shields.io/badge/bandit-.*)|![Bandit Security](${bandit_badge})|" README.md
+        sed -i "s|!\[autopep8 Formatting\](https://img.shields.io/badge/autopep8-.*)|![autopep8 Formatting](${autopep8_badge})|g" README.md
     - name: Commit updated README.md 
       run: |
         git config user.name "github-actions"
