@@ -1,4 +1,4 @@
-name: Pytest HW2
+name: Pytest_Hw2
 
 on:
   push:
