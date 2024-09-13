@@ -1,6 +1,3 @@
-rand.py
-
-
 import subprocess
 
 def random_array(arr):
