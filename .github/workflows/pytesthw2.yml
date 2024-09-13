@@ -75,7 +75,7 @@ jobs:
       run: |
         if [ "$autopep8_status" = "success" ]; then
           badge_color="brightgreen"
-          badge_message="autopep8-format done"
+          badge_message="autopep8-formatted"
         elif [ "$autopep8_status" = "failure" ]; then
           badge_color="red"
           badge_message="autopep8-not_formatted"
