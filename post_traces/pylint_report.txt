@@ -1,4 +1,9 @@
+************* Module hw2_debugging
+hw2_debugging.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+hw2_debugging.py:4:0: C0116: Missing function or method docstring (missing-function-docstring)
+hw2_debugging.py:4:15: W0621: Redefining name 'arr' from outer scope (line 44) (redefined-outer-name)
+hw2_debugging.py:13:0: C0116: Missing function or method docstring (missing-function-docstring)
 
-------------------------------------
-Your code has been rated at 10.00/10
+-----------------------------------
+Your code has been rated at 8.67/10
 
