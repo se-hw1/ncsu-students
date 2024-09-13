@@ -1,4 +1,5 @@
 from hw2_debugging import merge_sort
+from rand import random_array
 
 
 def test_correctly_sorted():
