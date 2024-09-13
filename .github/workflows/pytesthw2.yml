@@ -8,7 +8,7 @@ on:
   pull_request:
     branches:
       - 'main'
-     
+
 permissions:
   contents: write
 
@@ -45,7 +45,7 @@ jobs:
 
     - name: Check code formatting with autopep8
       run: |
-        autopep8 --diff test_cases.py > post_traces/autopep8_report.txt || true
+        autopep8 --diff --exit-code hw2_debugging.py > post_traces/autopep8_report.txt || true
 
     - name: Test with pytest
       run: |
@@ -73,10 +73,11 @@ jobs:
 
     - name: Generate autopep8 badge
       run: |
-        total_lines=$(wc -l < hw2_debugging.py)
-        formatted_lines=$(autopep8 --diff hw2_debugging.py | grep -E '^---|^\+\+\+' | wc -l)
-        percentage=$(echo "scale=2; ($formatted_lines / $total_lines) * 100" | bc)
-        autopep8_badge="https://img.shields.io/badge/autopep8-${percentage}%20formatted-brightgreen"
+        if grep -q "exit code 0" post_traces/autopep8_report.txt; then
+          autopep8_badge="https://img.shields.io/badge/autopep8-formatted-brightgreen"
+        else
+          autopep8_badge="https://img.shields.io/badge/autopep8-needs%20formatting-red"
+        fi
         echo "$autopep8_badge"
         echo "$autopep8_badge" > post_traces/autopep8_badge.txt
 
@@ -94,9 +95,10 @@ jobs:
       run: |
         git config user.name "github-actions"
         git config user.email "github-actions@github.com"
-        git add README.md post_traces/pylint_badge.txt post_traces/bandit_badge.txt post_traces/pylint_report.txt post_traces/bandit_report.txt
-        git commit -am "Update Pylint and bandit badges" || echo "No changes to commit"
+        git add README.md post_traces/pylint_badge.txt post_traces/bandit_badge.txt post_traces/autopep8_badge.txt post_traces/pylint_report.txt post_traces/bandit_report.txt
+        git commit -am "Update Pylint, Bandit, and autopep8 badges" || echo "No changes to commit"
         git push
+
 
 
      
