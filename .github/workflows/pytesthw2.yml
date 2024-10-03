@@ -95,8 +95,13 @@ jobs:
         autopep8_badge=$(cat post_traces/autopep8_badge.txt)
 
         sed -i "s|!\[Pylint Score\](https://img.shields.io/badge/pylint-.*)|![Pylint Score](${pylint_badge})|g" README.md
-        sed -i "s|!\[Bandit Security\](https://img.shields.io/badge/bandit-.*)|![Bandit Security](${bandit_badge})|" README.md
-        sed -i "s|!\[autopep8\](https://img.shields.io/badge/autopep8-.*)|![autopep8](${autopep8_badge})|" README.md
+        sed -i "s|\[!\[Pylint Score\](.*)\](https://github.com/se-hw1/ncsu-students/actions/workflows/pytesthw2.yml)|\[![Pylint Score](${pylint_badge})\](https://github.com/se-hw1/ncsu-students/actions/workflows/pytesthw2.yml)|g" README.md
+
+        sed -i "s|!\[Bandit Security\](https://img.shields.io/badge/bandit-.*)|![Bandit Security](${bandit_badge})|g" README.md
+        sed -i "s|\[!\[Bandit Security\](.*)\](https://github.com/se-hw1/ncsu-students/actions/workflows/pytesthw2.yml)|\[![Bandit Security](${bandit_badge})\](https://github.com/se-hw1/ncsu-students/actions/workflows/pytesthw2.yml)|g" README.md
+
+        sed -i "s|!\[autopep8 Formatting\](https://img.shields.io/badge/autopep8-.*)|![autopep8 Formatting](${autopep8_badge})|g" README.md
+        sed -i "s|\[!\[autopep8 Formatting\](.*)\](https://github.com/se-hw1/ncsu-students/actions/workflows/pytesthw2.yml)|\[![autopep8 Formatting](${autopep8_badge})\](https://github.com/se-hw1/ncsu-students/actions/workflows/pytesthw2.yml)|g" README.md
 
     - name: Commit updated README.md 
       run: |
