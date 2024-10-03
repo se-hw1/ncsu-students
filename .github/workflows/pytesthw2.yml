@@ -79,7 +79,7 @@ jobs:
         else
           autopep8_status="failure"
         fi
-    
+
         if [ "$autopep8_status" = "success" ]; then
           badge_color="brightgreen"
           badge_message="autopep8-formatted"
