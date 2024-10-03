@@ -94,9 +94,9 @@ jobs:
         bandit_badge=$(cat post_traces/bandit_badge.txt)
         autopep8_badge=$(cat post_traces/autopep8_badge.txt)
 
-        sed -i "s|\(!\[Pylint Score\](https://img.shields.io/badge/pylint-\).*|\1${pylint_badge})|g" README.md
-        sed -i "s|\(!\[Bandit Security\](https://img.shields.io/badge/bandit-\).*|\1${bandit_badge})|g" README.md
-        sed -i "s|\(!\[autopep8 Formatting\](https://img.shields.io/badge/autopep8-\).*|\1${autopep8_badge})|g" README.md
+        sed -i "s|!\[Pylint Score\](https://img.shields.io/badge/pylint-.*)|![Pylint Score](${pylint_badge})|g" README.md
+        sed -i "s|!\[Bandit Security\](https://img.shields.io/badge/bandit-.*)|![Bandit Security](${bandit_badge})|" README.md
+        sed -i "s|!\[autopep8\](https://img.shields.io/badge/autopep8-.*)|![autopep8](${autopep8_badge})|" README.md
 
     - name: Commit updated README.md 
       run: |
@@ -105,6 +105,7 @@ jobs:
         git add README.md post_traces/pylint_badge.txt post_traces/bandit_badge.txt post_traces/autopep8_badge.txt post_traces/pylint_report.txt post_traces/bandit_report.txt
         git commit -am "Update Pylint, Bandit, and autopep8 badges" || echo "No changes to commit"
         git push
+ 
 
 
 
