@@ -8,7 +8,7 @@
 [![Pylint Score](https://img.shields.io/badge/pylint-https://img.shields.io/badge/pylint-10.00/10-brightgreen)
 [![Bandit Security](https://img.shields.io/badge/bandit-https://img.shields.io/badge/bandit-safe-brightgreen)
 [![autopep8 Formatting](https://img.shields.io/badge/autopep8-https://img.shields.io/badge/autopep8-status_unknown-lightgrey)
-
+![workflow](https://github.com/se-hw1/ncsu-students/actions/workflows/pytesthw2.yml/badge.svg)
 
 
 ![workflow](https://github.com/se-hw1/ncsu-students/actions/workflows/pytesthw2.yml/badge.svg)
