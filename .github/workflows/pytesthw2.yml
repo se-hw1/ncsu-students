@@ -73,6 +73,13 @@ jobs:
 
     - name: Generate autopep8 badge
       run: |
+        autopep8_status="unknown"
+        if autopep8 --diff --exit-code hw2_debugging.py; then
+          autopep8_status="success"
+        else
+          autopep8_status="failure"
+        fi
+    
         if [ "$autopep8_status" = "success" ]; then
           badge_color="brightgreen"
           badge_message="autopep8-formatted"
@@ -88,6 +95,8 @@ jobs:
         echo "$badge_url"
         echo "$badge_url" > post_traces/autopep8_badge.txt
 
+    
+
     - name: Update README.md with badges
       run: |
         pylint_badge=$(cat post_traces/pylint_badge.txt)
@@ -97,6 +106,7 @@ jobs:
         sed -i "s|!\[Pylint Score\](https://img.shields.io/badge/pylint-.*)|![Pylint Score](${pylint_badge})|g" README.md
         sed -i "s|!\[Bandit Security\](https://img.shields.io/badge/bandit-.*)|![Bandit Security](${bandit_badge})|" README.md
         sed -i "s|!\[autopep8\](https://img.shields.io/badge/autopep8-.*)|![autopep8](${autopep8_badge})|" README.md
+ 
 
     - name: Commit updated README.md 
       run: |
