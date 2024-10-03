@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - 'main'
-      
   pull_request:
     branches:
       - 'main'
@@ -31,35 +30,41 @@ jobs:
     - name: Install autopep8, pylint, and bandit
       run: pip install autopep8 pylint bandit
 
+    # Format code with autopep8
     - name: Format code with autopep8
       run: autopep8 --in-place --aggressive --aggressive hw2_debugging.py
 
+    # Run Bandit for security analysis
     - name: Run Bandit for security analysis
       run: |
         mkdir -p post_traces
         bandit hw2_debugging.py > post_traces/bandit_report.txt || true
 
+    # Lint code with Pylint
     - name: Lint code with Pylint
       run: |
         pylint hw2_debugging.py > post_traces/pylint_report.txt || true
 
+    # Check code formatting with autopep8
     - name: Check code formatting with autopep8
       run: |
         autopep8 --diff --exit-code hw2_debugging.py > post_traces/autopep8_report.txt || true
 
+    # Test with pytest
     - name: Test with pytest
       run: |
         pip install pytest pytest-cov
         pip install --upgrade setuptools
         pytest test_cases.py --doctest-modules --junitxml=post_traces/test-results.xml --cov=src --cov-report=xml --cov-report=html
 
+    # Generate Pylint badge
     - name: Generate Pylint badge
       run: |
         pylint_score=$(grep -oP 'Your code has been rated at \K[0-9.]+\/10' post_traces/pylint_report.txt)
         pylint_badge="https://img.shields.io/badge/pylint-${pylint_score}-brightgreen"
-        echo "$pylint_badge"
         echo "$pylint_badge" > post_traces/pylint_badge.txt
 
+    # Generate Bandit badge
     - name: Generate Bandit badge
       run: |
         bandit_issues=$(grep 'No issues identified' post_traces/bandit_report.txt | wc -l)
@@ -68,26 +73,24 @@ jobs:
         else
           bandit_badge="https://img.shields.io/badge/bandit-issues-red"
         fi
-        echo "$bandit_badge"
         echo "$bandit_badge" > post_traces/bandit_badge.txt
 
+    # Generate autopep8 badge
     - name: Generate autopep8 badge
       run: |
+        autopep8_status=$(autopep8 --exit-code hw2_debugging.py && echo "success" || echo "failure")
         if [ "$autopep8_status" = "success" ]; then
           badge_color="brightgreen"
           badge_message="autopep8-formatted"
-        elif [ "$autopep8_status" = "failure" ]; then
+        else
           badge_color="red"
           badge_message="autopep8-not_formatted"
-        else
-          badge_color="lightgrey"
-          badge_message="autopep8-status_unknown"
         fi
 
         badge_url="https://img.shields.io/badge/${badge_message}-${badge_color}"
-        echo "$badge_url"
         echo "$badge_url" > post_traces/autopep8_badge.txt
 
+    # Update README.md with badges
     - name: Update README.md with badges
       run: |
         pylint_badge=$(cat post_traces/pylint_badge.txt)
@@ -98,11 +101,11 @@ jobs:
         sed -i "s|!\[Bandit Security\](https://img.shields.io/badge/bandit-.*)|![Bandit Security](${bandit_badge})|" README.md
         sed -i "s|!\[autopep8\](https://img.shields.io/badge/autopep8-.*)|![autopep8](${autopep8_badge})|" README.md
 
+    # Commit updated README.md 
     - name: Commit updated README.md 
       run: |
         git config user.name "github-actions"
         git config user.email "github-actions@github.com"
-        git add README.md post_traces/pylint_badge.txt post_traces/bandit_badge.txt post_traces/autopep8_badge.txt post_traces/pylint_report.txt post_traces/bandit_report.txt
+        git add README.md post_traces/*
         git commit -am "Update Pylint, Bandit, and autopep8 badges" || echo "No changes to commit"
         git push
-    
